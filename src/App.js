@@ -5,13 +5,14 @@ import { useEffect, useState } from 'react';
 
 
 const App = () =>{
-  const [chosenPlayer, setChosenPlayer] = useState(null);
+  var [chosenPlayer, setChosenPlayer] = useState(null);
   
   const [words, setWords] = useState(null);
   const [searchInput, setSearchInput] = useState('');
   const [year, setYear] = useState('2023');
   const [pos, setPos] = useState('');
   const [team, setTeam] = useState('');
+  const [teamName, setTeamName] = useState('');
   const [league, setLeague] = useState('');
   const [goals, setGoals] = useState('');
   const [assists, setAssists] = useState('');
@@ -81,42 +82,113 @@ const App = () =>{
     console.log(player1.player);
 
     player1.statistics.map(stat=>
-        setPos(stat.games.position)  );
+
+          setPos(stat.games.position)
+ 
+        );
 
     player1.statistics.map(stat=>
+
+
         setTeam(stat.team.logo));
+
+    player1.statistics.map(stat=>
+        setTeamName(stat.team.name));
 
     player1.statistics.map(stat=>
         setLeague(stat.league.logo));
 
     player1.statistics.map( stat =>
-          setPlayed(stat.games.appearences));
+
+      {if (stat.games.appearences){
+        setPlayed(stat.games.appearences)
+      }
+      else{
+        setPlayed('0')
+
+      }} );
 
     setPhoto(player1.player.photo);
    
     setName(player1.player.name);
                 
     player1.statistics.map( stat =>
-        setGoals(stat.goals.total));
+
+      {if (stat.goals.total){
+        setGoals(stat.goals.total)
+      }
+      else{
+        setGoals('0')
+
+      }}
+       );
       
       
 
     player1.statistics.map( stat =>
-        setAssists(stat.goals.assists));
+
+      {if (stat.goals.assists){
+        setAssists(stat.goals.assists)
+      }
+      else{
+        setAssists('0')
+
+      }}
+       );
+
+      
+       
         
       
 
     player1.statistics.map( stat =>
-        setDribbles(stat.dribbles.success));
+
+      {if (stat.dribbles.success){
+        setDribbles(stat.dribbles.success)
+      }
+      else{
+        setDribbles('0')
+
+      }}
+       );
+
       
     player1.statistics.map( stat =>
-          setShotsOnTarget(stat.shots.on));
+
+      {if (stat.shots.on){
+        setShotsOnTarget(stat.shots.on)
+      }
+      else{
+        setShotsOnTarget('0')
+
+      }}
+       );
+
+
         
     player1.statistics.map( stat =>
-          setTackles(stat.tackles.total));
+
+      {if (stat.tackles.total){
+        setTackles(stat.tackles.total)
+      }
+      else{
+        setTackles('0')
+
+      }}
+       );
+         
 
     player1.statistics.map( stat =>
-        setPlayed(stat.games.appearences));
+
+      {if (stat.games.appearences){
+        setPlayed(stat.games.appearences)
+      }
+      else{
+        setPlayed('0')
+
+      }}
+       );
+       
 
     setWeight(player1.player.weight);
 
@@ -130,48 +202,165 @@ const App = () =>{
                                 
 
     player1.statistics.map( stat =>
-        setShotsOnTarget(stat.shots.on));
+
+      {if (stat.shots.on){
+        setShotsOnTarget(stat.shots.on)
+      }
+      else{
+        setShotsOnTarget('0')
+
+      }}
+       );
+     
                                       
                 
 
     player1.statistics.map( stat =>
-        setTotalShots(stat.shots.total));
+
+      {if (stat.shots.total){
+        setTotalShots(stat.shots.total)
+      }
+      else{
+        setTotalShots('0')
+
+      }}
+       );
+        
                                             
                   
 
     player1.statistics.map( stat =>
-        setPasses(stat.passes.total));
+
+      {if (stat.passes.total){
+        setPasses(stat.passes.total)
+      }
+      else{
+        setPasses('0')
+
+      }}
+       );
+
+
+
+       
                                                   
                 
     player1.statistics.map( stat =>
-        setKeyPasses(stat.passes.key));
+
+      {if (stat.passes.key){
+        setKeyPasses(stat.passes.key)
+      }
+      else{
+        setKeyPasses('0')
+
+      }}
+       );
+
+
+       
                                                         
                 
     player1.statistics.map( stat =>
-        setPassPercent(stat.passes.accuracy));
+
+      {if (stat.passes.accuracy){
+        setPassPercent(stat.passes.accuracy)
+      }
+      else{
+        setPassPercent('0')
+
+      }}
+       );
+
+
+
+
+
+      
                                                               
                 
     player1.statistics.map( stat =>
-        setTackles(stat.tackles.total));
+
+      {if (stat.tackles.total){
+        setTackles(stat.tackles.total)
+      }
+      else{
+        setTackles('0')
+
+      }}
+       );
+
+
+
+
+       
                                                                     
                 
     player1.statistics.map( stat =>
-        setBlocks(stat.tackles.blocks));
+
+
+      {if (stat.tackles.blocks){
+        setBlocks(stat.tackles.blocks)
+      }
+      else{
+        setBlocks('0')
+
+      }}
+       );
+      
                                                                           
                 
     player1.statistics.map( stat =>
-        setInterceptions(stat.tackles.interceptions));
+
+      {if (stat.tackles.interceptions){
+        setInterceptions(stat.tackles.interceptions)
+      }
+      else{
+        setInterceptions('0')
+
+      }}
+       );
+       
                                                                                 
                   
     player1.statistics.map( stat =>
-          setYellow(stat.cards.yellow));
+
+      {if (stat.cards.yellow){
+        setYellow(stat.cards.yellow)
+      }
+      else{
+        setYellow('0')
+
+      }}
+       );
+
+
+          
                                                                                       
     
     player1.statistics.map( stat =>
-                setRed(stat.cards.red));
+      {if (stat.cards.red){
+        setRed(stat.cards.red)
+      }
+      else{
+        setRed('0')
+
+      }}
+       );
+               
                                                                                                       
     player1.statistics.map( stat =>
-                setYellowRed(stat.cards.yellowRed));
+
+
+      {if (stat.cards.ellowRed){
+        setYellowRed(stat.cards.yellowRed)
+      }
+      else{
+        setYellowRed('0')
+
+      }}
+       );
+           
+              
                                                                                                   
               
     
@@ -217,7 +406,7 @@ const App = () =>{
             id = 'levels' value = {year}
             onChange ={(e) => setYear(e.target.value)}
             className = 'yearSelect'> 
-          <option value = {'2023'}> Select a Value </option>
+          <option value = {'2023'}> Select a Season </option>
           <option value = {'2023'}> 2023/24 </option>
           <option value = {'2022'}> 2022/23 </option>
           <option value = {'2021'}> 2021/22 </option>
@@ -253,81 +442,198 @@ const App = () =>{
       </div>}
 
       {chosenPlayer && words && <div className="question-area">
-        <h1> Player: {chosenPlayer}</h1>
+      
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700"/>
 
           <div class="wrapper">
-            
-            <div class="fut-player-card">
-            
-              <div class="player-card-top">
-                <div class="player-master-info">
-                  <div class="player-position"><span>
 
-                 {pos.slice(0,3)}
+            
+            <div class = "statBox">
 
-                    
-                    </span></div>
-                  <div class="player-club">   
-                              <img src = {team}></img>
-                  </div>
-                  <div class="player-nation">   
+
+                    <div class="statHeader">
+                      <span> Player: {playerName}</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Position: {pos}</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Nationality: {nationality}</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Club: {teamName}</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Height: {height}</span>
+                    </div>
+                    <div class="player-stat">
+                      <span> Weight: {weight}</span>
+                    </div>
+                    <div class="player-stat">
+                      <span> Current age: {age}</span>
+                    </div>
+
+                    <div class = " statHeader">
+                        <span> {year} Season Stats </span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Total Shots: {totalShots}</span>
+                    </div>
+                    <div class="player-stat">
+                      <span> Shots On Target: {shotsOnTarget}</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Total Passes: {passes}</span>
+                    </div>
+                    <div class="player-stat">
+                      <span> Key Passes: {keyPasses}</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Dribbles: {dribbles}</span>
+                    </div>
+                    <div class="player-stat">
+                      <span> Goals: {goals}</span>
+                    </div>
+                    <div class="player-stat">
+                      <span> Assists: {assists}</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Successfull Pass Percentage: {passPercent}</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Blocks: {blocks}</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Interceptions: {interceptions}</span>
+                    </div>
+
+                    <div class = " statHeader">
+                        <span> Player Offences</span>
+                    </div>
+
+                    <div class="player-stat">
+                      <span> Yellow Cards: {yellow}</span>
+                    </div>
+                    <div class="player-stat">
+                      <span> Red Cards: {red}</span>
+                    </div>
+
                   
-                              <img src = {league}></img>
- 
-                  </div>
-                </div>
-                <div class="player-picture">
-                <img src= {playerPhoto} ></img>
+
+                    <div class="player-stat">
+                      <span> Yellow to Red: {yellowRed}</span>
+                    </div>
+
+
                     
-                  <div class="player-extra"><span></span><span></span></div>
-                </div>
-              </div>
+                   
               
-              <div class="player-card-bottom">
-                <div class="player-info">
-                  
-                  <div class="player-name">
+              
 
-                  <span>{playerName}</span>
-                  
+
+            </div>
+            <div class = "playerBox">
+              <div class = 'player'>
+                <div class = "topBarPlayer">
+                 
+
+                  <div>
+                  <h1 class='playerNameBox'> Player: {playerName}</h1>
                   </div>
+
+                  <div class = 'ButtonBox'>
+                    <button class = "BackBtn" onClick= {()=> setChosenPlayer(null)}> Back to Search </button>
+                  </div>
+              </div>
+
+              <div class = 'playerWrapper'>
+              
+              
+              <div class="fut-player-card">
+              
+                <div class="player-card-top">
+                  <div class="player-master-info">
+                    <div class="player-position"><span>
+
+                  {pos.slice(0,3)}
+
+                      
+                      </span></div>
+                    <div class="player-club">   
+                                <img src = {team}></img>
+                    </div>
+                    <div class="player-nation">   
+                    
+                                <img src = {league}></img>
+  
+                    </div>
+                  </div>
+                  <div class="player-picture">
+                  <img src= {playerPhoto} ></img>
+                      
+                    <div class="player-extra"><span></span><span></span></div>
+                  </div>
+                </div>
                 
-                  <div class="player-features">
-                    <div class="player-features-col"><span>
-                        <div class ='player-feature-value'> 
-                        <span> {goals}</span>
-                          </div>
-                        <div class="player-feature-title">Gls</div></span><span>
-                        
-                        <div class="player-feature-value"> <span> {assists}</span>
-                          </div>
-                         
-                          <div class="player-feature-title"> Ast</div></span><span>
-                        
-                        <div class="player-feature-value">
-                           <span>{played}</span>
-                           </div>
-                        <div class="player-feature-title">Games</div></span></div>
-                    <div class="player-features-col"><span>
-                        <div class="player-feature-value">{dribbles}</div>
-                        <div class="player-feature-title">Dribbles</div></span>
-                        <span>
-                        <div class="player-feature-value"> {shotsOnTarget}
+                <div class="player-card-bottom">
+                  <div class="player-info">
+                    
+                    <div class="player-name">
 
-                           </div>
+                    <span>{playerName}</span>
+                    
+                    </div>
+                  
+                    <div class="player-features">
+                      <div class="player-features-col"><span>
+                          <div class ='player-feature-value'> 
+                          <span> {goals}</span>
+                            </div>
+                          <div class="player-feature-title">Gls</div></span><span>
+                          
+                          <div class="player-feature-value"> <span> {assists}</span>
+                            </div>
+                          
+                            <div class="player-feature-title"> Ast</div></span><span>
+                          
+                          <div class="player-feature-value">
+                            <span>{played}</span>
+                            </div>
+                          <div class="player-feature-title">Games</div></span></div>
+                      <div class="player-features-col"><span>
+                          <div class="player-feature-value">{dribbles}</div>
+                          <div class="player-feature-title">Dribbles</div></span>
+                          <span>
+                          <div class="player-feature-value"> {shotsOnTarget}
+
+                            </div>
 
 
-                        <div class="player-feature-title">Shots On Tar</div>
-                        </span><span>
-                        <div class ='player-feature-value'> 
-                                <span> {tackles}</span>
+                          <div class="player-feature-title">Shots On Tar</div>
+                          </span><span>
+                          <div class ='player-feature-value'> 
+                                  <span> {tackles}</span>
+                            </div>
+                          <div class="player-feature-title">Tackles</div></span>
+                          
                           </div>
-                        <div class="player-feature-title">Tackles</div></span>
-                        
+
+                        </div>
                         </div>
                   </div>
+                </div>
+
                 </div>
               </div>
             </div>
@@ -349,7 +655,7 @@ const App = () =>{
       
 
           
-        </div>};
+        </div>}
 
        
 
