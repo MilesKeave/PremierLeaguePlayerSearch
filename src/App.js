@@ -416,6 +416,13 @@ const App = () =>{
           <option value = {'2017'}> 2017/18 </option>
           <option value = {'2016'}> 2016/17 </option>
           <option value = {'2015'}> 2015/16 </option>
+          <option value = {'2014'}> 2014/15 </option>
+          <option value = {'2013'}> 2013/14 </option>
+          <option value = {'2012'}> 2012/13 </option>
+          <option value = {'2011'}> 2011/12 </option>
+          <option value = {'2010'}> 2010/11 </option>
+          <option value = {'2009'}> 2009/10 </option>
+          <option value = {'2008'}> 2008/09 </option>
         </select>
       </div>
 
