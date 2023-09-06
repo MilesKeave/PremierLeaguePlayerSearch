@@ -467,8 +467,6 @@ const App = () =>{
         </select>
       </div>
 
-
-
       <div className = "searchBar">
 
                   <input
@@ -479,27 +477,39 @@ const App = () =>{
                 onChange = {(e) => setSearchInput(e.target.value)}
                 value={searchInput} />
 
-                {(playersList.length >1) && 
-                <select 
-                        name = 'levels' 
-                        id = 'levels' 
-                        onChange ={(e) => 
-                          
-                          setChosenID(e.target.value) }
-                        > 
-                        <option value = "select a player"> Select Player </option>
-                        
+                
 
-                        {playersList.map(players => 
-                        
-                        <option  value = {players.player.id}> {players.player.name} </option>)}
-                     
-                     
-                </select> }
+                { (playersList.length >1) &&  
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Player Options</label>
+                </div>
+                { (playersList.length >1) && 
+                    <select 
+                            name = 'levels' 
+                            id = 'levels' 
+                            onChange ={(e) => 
+                              
+                              setChosenID(e.target.value) }
+                              
+                            > 
+                            <option value = "select a player"> Select Player </option>
+                            
+    
+                            {playersList.map(players => 
+                            
+                            <option  value = {players.player.id}> {players.player.name} </option>)}
+                         
+                         
+                    </select> }
+          </div>
+     }
 
                 <div className="buttonBox"> 
 
-                    <button class='enterButton' onClick= {()=> 
+                
+
+                    <button class='enterButton btn btn-primary' data-toggle="button" aria-pressed="false" autocomplete="off" onClick= {()=> 
 
                       
                       
