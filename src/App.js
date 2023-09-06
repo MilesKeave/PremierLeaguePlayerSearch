@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 
 const App = () =>{
   var [chosenPlayer, setChosenPlayer] = useState(null);
+
+  var [chosenID, setChosenID] = useState(null);
   
   const [words, setWords] = useState(null);
   const [searchInput, setSearchInput] = useState('');
@@ -36,6 +38,7 @@ const App = () =>{
   const [red, setRed] = useState('');
   const [yellowRed, setYellowRed] = useState('');
   const [playerPhoto, setPhoto] = useState('');
+  const [playersList, setPlayersList] = useState('');
   
 
 
@@ -48,7 +51,14 @@ const App = () =>{
   };
   
   
+  const resetButton = () =>{
+    setChosenPlayer(null);
+    setChosenID(null);  
+    setPlayersList([]);
+    console.log('reset');
+    
 
+  }
   
 
   const getPlayer = () => {
@@ -59,7 +69,8 @@ const App = () =>{
       params: {
         season: year,
         search: chosenPlayer,
-        league: '39'
+        league: '39',
+        id: chosenID
       },
       headers: {
         'X-RapidAPI-Key': '666c3015f6msh9bed86780ddc484p1cd254jsnc317044f5afb',
@@ -72,293 +83,312 @@ const App = () =>{
     console.log(response);
     setWords(response.data);
     console.log('here');
-
-    
- 
-
-    var player1 = response.data.response[0];
-
-    console.log(player1.statistics);
-    console.log(player1.player);
-
-    player1.statistics.map(stat=>
-
-          setPos(stat.games.position)
- 
-        );
-
-    player1.statistics.map(stat=>
-
-
-        setTeam(stat.team.logo));
-
-    player1.statistics.map(stat=>
-        setTeamName(stat.team.name));
-
-    player1.statistics.map(stat=>
-        setLeague(stat.league.logo));
-
-    player1.statistics.map( stat =>
-
-      {if (stat.games.appearences){
-        setPlayed(stat.games.appearences)
-      }
-      else{
-        setPlayed('0')
-
-      }} );
-
-    setPhoto(player1.player.photo);
    
-    setName(player1.player.name);
-                
-    player1.statistics.map( stat =>
 
-      {if (stat.goals.total){
-        setGoals(stat.goals.total)
-      }
-      else{
-        setGoals('0')
-
-      }}
-       );
-      
-      
-
-    player1.statistics.map( stat =>
-
-      {if (stat.goals.assists){
-        setAssists(stat.goals.assists)
-      }
-      else{
-        setAssists('0')
-
-      }}
-       );
-
-      
-       
-        
-      
-
-    player1.statistics.map( stat =>
-
-      {if (stat.dribbles.success){
-        setDribbles(stat.dribbles.success)
-      }
-      else{
-        setDribbles('0')
-
-      }}
-       );
-
-      
-    player1.statistics.map( stat =>
-
-      {if (stat.shots.on){
-        setShotsOnTarget(stat.shots.on)
-      }
-      else{
-        setShotsOnTarget('0')
-
-      }}
-       );
-
-
-        
-    player1.statistics.map( stat =>
-
-      {if (stat.tackles.total){
-        setTackles(stat.tackles.total)
-      }
-      else{
-        setTackles('0')
-
-      }}
-       );
-         
-
-    player1.statistics.map( stat =>
-
-      {if (stat.games.appearences){
-        setPlayed(stat.games.appearences)
-      }
-      else{
-        setPlayed('0')
-
-      }}
-       );
-       
-
-    setWeight(player1.player.weight);
-
-    setHeight(player1.player.height);
     
-    setName(player1.player.name);
+ 
+    setPlayersList(response.data.response);
+    console.log(response.data.response);
+    console.log(response.data.response.length);
+    
 
-    setAge(player1.player.age);
-                            
-    setNationality(player1.player.nationality);
-                                
 
-    player1.statistics.map( stat =>
+    if (response.data.response.length == 1){
+          var player1 = response.data.response[0];
+          setChosenID(player1.player.id);
 
-      {if (stat.shots.on){
-        setShotsOnTarget(stat.shots.on)
-      }
-      else{
-        setShotsOnTarget('0')
+          console.log(player1.statistics);
+          console.log(player1.player);
 
-      }}
-       );
-     
-                                      
-                
+          player1.statistics.map(stat=>
 
-    player1.statistics.map( stat =>
+                setPos(stat.games.position)
+      
+              );
 
-      {if (stat.shots.total){
-        setTotalShots(stat.shots.total)
-      }
-      else{
-        setTotalShots('0')
+          player1.statistics.map(stat=>
 
-      }}
-       );
+
+              setTeam(stat.team.logo));
+
+          player1.statistics.map(stat=>
+              setTeamName(stat.team.name));
+
+          player1.statistics.map(stat=>
+              setLeague(stat.league.logo));
+
+          player1.statistics.map( stat =>
+
+            {if (stat.games.appearences){
+              setPlayed(stat.games.appearences)
+            }
+            else{
+              setPlayed('0')
+
+            }} );
+
+          setPhoto(player1.player.photo);
         
-                                            
-                  
+          setName(player1.player.name);
+                      
+          player1.statistics.map( stat =>
 
-    player1.statistics.map( stat =>
+            {if (stat.goals.total){
+              setGoals(stat.goals.total)
+            }
+            else{
+              setGoals('0')
 
-      {if (stat.passes.total){
-        setPasses(stat.passes.total)
-      }
-      else{
-        setPasses('0')
+            }}
+            );
+            
+            
 
-      }}
-       );
+          player1.statistics.map( stat =>
 
+            {if (stat.goals.assists){
+              setAssists(stat.goals.assists)
+            }
+            else{
+              setAssists('0')
 
+            }}
+            );
 
-       
-                                                  
-                
-    player1.statistics.map( stat =>
+            
+            
+              
+            
 
-      {if (stat.passes.key){
-        setKeyPasses(stat.passes.key)
-      }
-      else{
-        setKeyPasses('0')
+          player1.statistics.map( stat =>
 
-      }}
-       );
+            {if (stat.dribbles.success){
+              setDribbles(stat.dribbles.success)
+            }
+            else{
+              setDribbles('0')
 
+            }}
+            );
 
-       
-                                                        
-                
-    player1.statistics.map( stat =>
+            
+          player1.statistics.map( stat =>
 
-      {if (stat.passes.accuracy){
-        setPassPercent(stat.passes.accuracy)
-      }
-      else{
-        setPassPercent('0')
+            {if (stat.shots.on){
+              setShotsOnTarget(stat.shots.on)
+            }
+            else{
+              setShotsOnTarget('0')
 
-      }}
-       );
-
-
-
-
-
-      
-                                                              
-                
-    player1.statistics.map( stat =>
-
-      {if (stat.tackles.total){
-        setTackles(stat.tackles.total)
-      }
-      else{
-        setTackles('0')
-
-      }}
-       );
+            }}
+            );
 
 
+              
+          player1.statistics.map( stat =>
 
+            {if (stat.tackles.total){
+              setTackles(stat.tackles.total)
+            }
+            else{
+              setTackles('0')
 
-       
-                                                                    
-                
-    player1.statistics.map( stat =>
+            }}
+            );
+              
 
+          player1.statistics.map( stat =>
 
-      {if (stat.tackles.blocks){
-        setBlocks(stat.tackles.blocks)
-      }
-      else{
-        setBlocks('0')
+            {if (stat.games.appearences){
+              setPlayed(stat.games.appearences)
+            }
+            else{
+              setPlayed('0')
 
-      }}
-       );
-      
-                                                                          
-                
-    player1.statistics.map( stat =>
+            }}
+            );
+            
 
-      {if (stat.tackles.interceptions){
-        setInterceptions(stat.tackles.interceptions)
-      }
-      else{
-        setInterceptions('0')
+          setWeight(player1.player.weight);
 
-      }}
-       );
-       
-                                                                                
-                  
-    player1.statistics.map( stat =>
-
-      {if (stat.cards.yellow){
-        setYellow(stat.cards.yellow)
-      }
-      else{
-        setYellow('0')
-
-      }}
-       );
-
-
+          setHeight(player1.player.height);
           
+          setName(player1.player.name);
+
+          setAge(player1.player.age);
+                                  
+          setNationality(player1.player.nationality);
+                                      
+
+          player1.statistics.map( stat =>
+
+            {if (stat.shots.on){
+              setShotsOnTarget(stat.shots.on)
+            }
+            else{
+              setShotsOnTarget('0')
+
+            }}
+            );
+          
+                                            
+                      
+
+          player1.statistics.map( stat =>
+
+            {if (stat.shots.total){
+              setTotalShots(stat.shots.total)
+            }
+            else{
+              setTotalShots('0')
+
+            }}
+            );
+              
+                                                  
+                        
+
+          player1.statistics.map( stat =>
+
+            {if (stat.passes.total){
+              setPasses(stat.passes.total)
+            }
+            else{
+              setPasses('0')
+
+            }}
+            );
+
+
+
+            
+                                                        
+                      
+          player1.statistics.map( stat =>
+
+            {if (stat.passes.key){
+              setKeyPasses(stat.passes.key)
+            }
+            else{
+              setKeyPasses('0')
+
+            }}
+            );
+
+
+            
+                                                              
+                      
+          player1.statistics.map( stat =>
+
+            {if (stat.passes.accuracy){
+              setPassPercent(stat.passes.accuracy)
+            }
+            else{
+              setPassPercent('0')
+
+            }}
+            );
+
+
+
+
+
+            
+                                                                    
+                      
+          player1.statistics.map( stat =>
+
+            {if (stat.tackles.total){
+              setTackles(stat.tackles.total)
+            }
+            else{
+              setTackles('0')
+
+            }}
+            );
+
+
+
+
+            
+                                                                          
+                      
+          player1.statistics.map( stat =>
+
+
+            {if (stat.tackles.blocks){
+              setBlocks(stat.tackles.blocks)
+            }
+            else{
+              setBlocks('0')
+
+            }}
+            );
+            
+                                                                                
+                      
+          player1.statistics.map( stat =>
+
+            {if (stat.tackles.interceptions){
+              setInterceptions(stat.tackles.interceptions)
+            }
+            else{
+              setInterceptions('0')
+
+            }}
+            );
+            
                                                                                       
+                        
+          player1.statistics.map( stat =>
+
+            {if (stat.cards.yellow){
+              setYellow(stat.cards.yellow)
+            }
+            else{
+              setYellow('0')
+
+            }}
+            );
+
+
+                
+                                                                                            
+          
+          player1.statistics.map( stat =>
+            {if (stat.cards.red){
+              setRed(stat.cards.red)
+            }
+            else{
+              setRed('0')
+
+            }}
+            );
+                    
+                                                                                                            
+          player1.statistics.map( stat =>
+
+
+            {if (stat.cards.ellowRed){
+              setYellowRed(stat.cards.yellowRed)
+            }
+            else{
+              setYellowRed('0')
+
+            }}
+            );
+
+
+    }
+    else{
+
+
+
+    }
+
+
     
-    player1.statistics.map( stat =>
-      {if (stat.cards.red){
-        setRed(stat.cards.red)
-      }
-      else{
-        setRed('0')
-
-      }}
-       );
-               
-                                                                                                      
-    player1.statistics.map( stat =>
-
-
-      {if (stat.cards.ellowRed){
-        setYellowRed(stat.cards.yellowRed)
-      }
-      else{
-        setYellowRed('0')
-
-      }}
-       );
            
               
                                                                                                   
@@ -368,18 +398,29 @@ const App = () =>{
     console.log(error);
    }) ;
   }
+
+
   console.log('words');
   console.log(words);
+
+
   //console.log(played);
   
  
   //console.log(words.results);
 
   useEffect( () =>{
-
+    console.log('chosenPlayer');
+    console.log(chosenPlayer);
     if (chosenPlayer) getPlayer()
 
-  }, chosenPlayer)
+  }, [chosenPlayer])
+
+  useEffect( () =>{
+    setChosenPlayer(null);
+    if (chosenID) getPlayer()
+
+  }, [chosenID])
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -394,7 +435,7 @@ const App = () =>{
 
 
     <div className="App">
-      {!chosenPlayer && <div className = 'PlayerSelector'>
+      {!(chosenID) && <div className = 'PlayerSelector'>
         <div className = "top">
           <h1 className="h1"> Premier League Player Stats</h1>
           <p className = 'par'> Select Year to begin</p>
@@ -430,7 +471,7 @@ const App = () =>{
 
       <div className = "searchBar">
 
-                    <input
+                  <input
                     className = 'bar'
                 type="search"
                 placeholder="Search by last name"
@@ -438,9 +479,31 @@ const App = () =>{
                 onChange = {(e) => setSearchInput(e.target.value)}
                 value={searchInput} />
 
+                {(playersList.length >1) && 
+                <select 
+                        name = 'levels' 
+                        id = 'levels' 
+                        onChange ={(e) => 
+                          
+                          setChosenID(e.target.value) }
+                        > 
+                        <option value = "select a player"> Select Player </option>
+                        
+
+                        {playersList.map(players => 
+                        
+                        <option  value = {players.player.id}> {players.player.name} </option>)}
+                     
+                     
+                </select> }
+
                 <div className="buttonBox"> 
 
-                    <button class='enterButton' onClick= {()=> setChosenPlayer(searchInput)} > Enter </button>
+                    <button class='enterButton' onClick= {()=> 
+
+                      
+                      
+                      setChosenPlayer(searchInput)} > Enter </button>
 
                 </div>
 
@@ -448,7 +511,7 @@ const App = () =>{
       </div>
       </div>}
 
-      {chosenPlayer && words && <div className="question-area">
+      {(chosenID || chosenPlayer) && (playersList.length == 1) && words && <div className="question-area">
       
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700"/>
@@ -560,7 +623,7 @@ const App = () =>{
                   </div>
 
                   <div class = 'ButtonBox'>
-                    <button class = "BackBtn" onClick= {()=> setChosenPlayer(null)}> Back to Search </button>
+                    <button class = "BackBtn" onClick= {()=> resetButton()  }> Back to Search </button>
                   </div>
               </div>
 
