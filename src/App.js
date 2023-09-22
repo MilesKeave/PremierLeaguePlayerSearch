@@ -475,36 +475,9 @@ const App = () =>{
                 placeholder="Search by last name"
                 onKeyDown= {handleKeyDown}
                 onChange = {(e) => setSearchInput(e.target.value)}
-                value={searchInput} />
-
-                
-
-                { (playersList.length >1) &&  
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Player Options</label>
-                </div>
-                { (playersList.length >1) && 
-                    <select 
-                            name = 'levels' 
-                            id = 'levels' 
-                            onChange ={(e) => 
-                              
-                              setChosenID(e.target.value) }
-                              
-                            > 
-                            <option value = "select a player"> Select Player </option>
-                            
-    
-                            {playersList.map(players => 
-                            
-                            <option  value = {players.player.id}> {players.player.name} </option>)}
-                         
-                         
-                    </select> }
-          </div>
-     }
-
+                value={searchInput}
+                />
+     
                 <div className="buttonBox"> 
 
                 
@@ -519,6 +492,34 @@ const App = () =>{
 
                       
       </div>
+      <div class='dropdown'>
+      {(playersList.length > 1) &&
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Player Options</label>
+
+
+                  {(playersList.length > 1) &&
+                    <select
+                      class = "dropdownBar"
+                      name='levels'
+                      id='levels'
+                      onChange={(e) => setChosenID(e.target.value)}
+
+                    >
+                      <option value="select a player"> Select Player </option>
+
+
+                      {playersList.map(players => <option value={players.player.id}> {players.player.name} </option>)}
+
+
+                    </select>}
+                </div>
+
+              </div>}
+      </div>
+
+
       </div>}
 
       {(chosenID || chosenPlayer) && (playersList.length == 1) && words && <div className="question-area">
@@ -633,7 +634,7 @@ const App = () =>{
                   </div>
 
                   <div class = 'ButtonBox'>
-                    <button class = "BackBtn" onClick= {()=> resetButton()  }> Back to Search </button>
+                    <button class='enterButton btn btn-primary' onClick= {()=> resetButton()  }> Back to Search </button>
                   </div>
               </div>
 
