@@ -1,6 +1,6 @@
 
 # Screenshots of the app
-(note that the purpose of this app was to utilize the Premier League API - little to no time was spent on the UI design or UI dev)
+(note that the purpose of this app was to utilize the Premier League API - little to no time was spent on the UI design)
 
 <img width="1345" alt="Screenshot 2023-10-31 at 4 25 04 PM" src="https://github.com/MilesKeave/PremierLeaguePlayerSearch/assets/97613883/e01c9910-2090-4a5a-835b-076d2f83daa2">
 
