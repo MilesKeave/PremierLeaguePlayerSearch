@@ -1,3 +1,14 @@
+
+# Screenshots of the app
+(note that the purpose of this app was to utilize the Premier League API - little to no time was spent on the UI design or UI dev)
+
+<img width="1345" alt="Screenshot 2023-10-31 at 4 25 04 PM" src="https://github.com/MilesKeave/PremierLeaguePlayerSearch/assets/97613883/e01c9910-2090-4a5a-835b-076d2f83daa2">
+
+<img width="1341" alt="Screenshot 2023-10-31 at 4 25 48 PM" src="https://github.com/MilesKeave/PremierLeaguePlayerSearch/assets/97613883/17a2c5e7-2d4d-42a2-a6ce-39bb61f77869">
+
+<img width="1340" alt="Screenshot 2023-10-31 at 4 27 57 PM" src="https://github.com/MilesKeave/PremierLeaguePlayerSearch/assets/97613883/07b34174-a5c8-446d-bacb-faef84047bb2">
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
